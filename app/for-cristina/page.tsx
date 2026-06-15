@@ -66,6 +66,22 @@ export default function ForCristina() {
             Play again
           </button>
         </div>
+
+        <h2 style={{ textAlign: 'center', marginTop: 48, marginBottom: 24, fontFamily: 'var(--font-display)', color: 'var(--brown)' }}>
+          All your messages
+        </h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          {messages.map((msg) => (
+            <div key={msg.id} className="card msg-card" style={{ padding: '24px 28px' }}>
+              <span className="quote" aria-hidden="true">&ldquo;</span>
+              <p className="msg-text">{msg.text}</p>
+              <p style={{ marginTop: 12, fontWeight: 600, color: 'var(--terra)', fontFamily: 'var(--font-body)', fontSize: '0.9rem' }}>
+                — {msg.from}
+              </p>
+            </div>
+          ))}
+        </div>
+
         <p className="note">Made with love for Cristina&apos;s 40th 🌸</p>
       </div>
     )
