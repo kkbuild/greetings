@@ -53,4 +53,16 @@ describe('getMessages', () => {
     const result = await getMessages()
     expect(result).toEqual([])
   })
+
+  it('filters out null entries from missing KV keys', async () => {
+    const stored = { id: '1', from: 'Ana', text: 'Hello', createdAt: 1000 }
+    mockKv.lrange.mockResolvedValue(['1', '2'])
+    mockKv.get.mockImplementation((key: string) =>
+      key === 'messages:1' ? Promise.resolve(stored) : Promise.resolve(null)
+    )
+
+    const result = await getMessages()
+    expect(result).toHaveLength(1)
+    expect(result[0].from).toBe('Ana')
+  })
 })
