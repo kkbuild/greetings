@@ -1,7 +1,7 @@
 const FALLBACKS = ['A friend', 'Someone special', 'A mystery guest']
 
 export function buildChoices(correctName: string, allNames: string[]): string[] {
-  const uniqueOthers = [...new Set(allNames.filter(n => n !== correctName))]
+  const uniqueOthers = Array.from(new Set(allNames.filter(n => n !== correctName)))
   const shuffled = [...uniqueOthers].sort(() => Math.random() - 0.5)
   const choices: string[] = [correctName, ...shuffled.slice(0, 3)]
 
