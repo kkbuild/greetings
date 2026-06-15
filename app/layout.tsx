@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Libre_Baskerville, Raleway } from 'next/font/google'
 import './globals.css'
 
@@ -15,10 +15,11 @@ const raleway = Raleway({
   variable: '--font-body',
 })
 
+export const viewport: Viewport = { themeColor: '#fdf3e7' }
+
 export const metadata: Metadata = {
   title: "Happy 40th, Cristina 🌸",
   description: "Leave Cristina an anonymous birthday message — she'll guess who it's from!",
-  themeColor: '#fdf3e7',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
